@@ -1,0 +1,10 @@
+timedatectl # data about time
+timedatectl set-time 12:00:00 # set time
+timedatectl set-ntp 0 # disable synchronization
+timedatectl set-ntp 1 # enable synchronization
+
+
+
+
+
+

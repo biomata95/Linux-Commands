@@ -1,0 +1,32 @@
+Mount devices
+
+Mount FAT32 filesystem:
+
+mount /dev/* /mnt/* -t vfat
+
+Details of filesystem. Example /dev/*
+
+file -s /dev/*
+
+
+Alter Label of partition
+
+$ sudo parted /dev/sdb
+(parted) mklabel msdos
+(parted) quit
+
+mkfs -t ext4 -q /dev/sdb1
+
+mkdir /newdisk
+mount /dev/sdb1 /newdisk
+
+/dev/sdb1 /newdisk ext4 defaults 0 2
+
+Reset a Partição
+
+dd if=/dev/zero of=/dev/mmcblk0p1
+
+check the filesystem
+
+fsck /dev/*
+

@@ -1,0 +1,14 @@
+[TERMINAL] apt install ideviceinstaller python-imobiledevice libimobiledevice-utils libimobiledevice6 libplist3 python-plist ifuse usbmuxd libusbmuxd-tools
+
+[TERMINAL] usbmuxd -f -v
+[DEVICE] connect to TERMINAL via USB cable
+[TERMINAL] open new shell window
+
+[TERMINAL] idevicepair pair
+[DEVICE] Trust This Computer? Tap Trust
+
+[TERMINAL] idevicepair pair
+
+[TERMINAL] mkdir /media/iPhone
+
+[TERMINAL] ifuse /media/iPhone
