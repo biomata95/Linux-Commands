@@ -1,0 +1,163 @@
+LIST OF LINUX COMMANDS 
+
+man -t ifconfig | ps2pdf - ifconfig.pdf <- save some manual in PDF
+rm -f arquivo.txt <- remove gallows file
+rm -rf arquivo.txt <- remove directory by hang
+ln -s /root/Documentos/arquivo.txt linkArquivo <- Link to file
+killall firefox <- kill firefox process by name
+ssh usuario@host <- connect to some server
+ssh -p porta usuario@host <- connect to some server with port
+ssh-copy-id usuario@host <- connect with password to enable server login
+grep -r 2 comandos.txt <- search for sequence in files
+grep -r 2 /root/Documentos <- search by sequence in directories
+lsusb | grep Intel <- search the command for the keyword after grep
+uptime <- displays system uptime
+w <- who is logged in
+finger <- user information
+uname -a <- user information
+cat /proc/cpuinfo <- cpu information
+cat /proc/meminfo <- memory information
+cat df <- disk usage
+du /root <- directory space on disk
+whereis grep <- application location
+whois 192.168.0.0 <- information about a domain
+dig 192.168.0.0 <- returns DNS information for domain
+dig -x 192.168.0.0 <- reverse return to a domain's DNS host
+arch <- machine architecture
+uname -r <- kernel version
+dmidecode -q <- hardware components
+hdparm -i /dev/sda <- hard drive features
+hdparm -iT /dev/sda <- hard disk read test
+cat /proc/interrupts <- displays interruptions
+cat /proc/net/dev <- statistics and network adapters
+cat /proc/mounts <- mounted filesystems
+shutdown -h now <- Turn off the system (1).
+shutdown -h minutos - Shuts down the system according to the selected minute (EX.: shutdown -h 30 , shuts down in 30 minutes).
+init 0 <- Turn off the system (2).
+telinit 0 <- Turn off the system (3).
+halt <- Turns off the system (4).
+shutdown -r mensagem:teste <- To send a message to users affected by the shutdown, use the command like this: sudo
+shutdown -r 30 <- The system will restart in 30 minutes
+shutdown -c <- Cancels a planned system shutdown.
+shutdown -r now <- Restart (1).
+reboot <- Restart (2).
+logout <- Closes the session.
+ls *[0-9]* <- files that contain numbers
+mkdir -p teste/teste2 <- create directory tree
+iconv -l <- List known figures
+find /root/Documentos -name arquivo1.txt <- search system file
+find / -user root <- search files for a certain user
+find /root/Documentos -name \*pdf <- search files of a certain extension
+find /root/Documentos/ -name \*.txt <- search files of a certain extension
+find /usr/bin -type f -atime +10 <- looks for binary files not used in the last 10 days
+find /root/Documentos/ -type f -mtime -5 <- files changed in the last 5 days
+locate \*.sh <- search all .sh files
+mount -o loop file.iso /mnt/cdrom <- mounts .iso
+mount -t vfat /dev/hda5 /mnt/hda5 <- mounts FAT32 
+groupadd nome_do_grupo <- create group
+groupdel nome_do_grupo <- delete group
+groupmod -n novo_nome_do_grupo viejo_nome_do_novo_grupo <- delete group
+groupmod -n novo_nome_do_grupo viejo_nome_do_novo_grupo <- rename group
+useradd -c “Name Surname ” -g admin -d /home/user1 -s /bin/bash user1 <- create new group admin user 
+useradd user1 <- create user
+userdel -r user1 <- delete user
+usermod -c “User FTP” -g system -d /ftp/user1 -s /bin/nologin user1 <- change user assignments
+chage -E 2016-06-22 user1 <- User password time limit
+chgrp group1 file1 <- Change the filegroup.
+chown user1 <- Group1 file1
+find / -perm -u+s <- View all files with SUID system configured.
+chmod u+s /bin/file1 <- Sets the SUID bit in a binary file. The user executing this file acquires the same privileges as the owner.
+chmod u-s /bin/file1 <- Disable the SUID bit in a binary file.
+chmod g+s /home/public <- Sets the SGID bit on a directory – similar to SUID but for the directory.
+chmod g-s /home/public <- Disables the SGID bit on a directory.
+chmod o+t /home/public <- Set STIKY bit to a directory. Allows file deletion only for legitimate owners.
+chmod o-t /home/public <- Turns off STIKY bit on a directory.
+chattr +a file1 <- Allows recording just by opening a file add mode.
+chattr +c file1 <- Allows a file to be zipped/unzipped automatically.
+chattr +d file1 <- It ensures that the program ignores deleting files during backup.
+chattr +i file1 <- Makes the file unchanged so it cannot be deleted, changed, renamed or linked.
+chattr +s file1 <- Allows a file to be safely deleted.
+chattr +S file1 <- It ensures that a file is modified, changes are written in synchronous mode, as with sync.
+chattr +u file1 <- It allows you to retrieve the contents of a file even if it is cancelled.
+lsattr <- Display special attributes.
+tail -f test.txt <- real-time change of files
+sed 's/teste/beauty/g' test.txt > test1.txt <- replaces the word test with beauty from the test.txt file and then saves the change in another file
+sed '/^$/d' <- remove blank lines
+sed '/^$/d'test.txt <- remove blank lines
+sed -e '1d' test.txt <- first line
+sed -n '/brasil/p' test.txt <- displays where is the word brazil
+dos2unix test.txt <- convert file from dos to unix
+unix2dos test.txt <- unix for dos
+ recode ..HTML <test.txt> page.html <- convert from txt to html
+badblocks -v /dev/sda5 <- check bad blocks
+fsck /dev/sda5 <- repair / check disk
+fsck.vfat /dev/sda5 <- repair / check disk
+fsck.msdos /dev/sda5 <- repair / check the disk
+mkfs /dev/sda5 <- check for bad blocks, not mounted
+dump -0aj -f bash.bak ../Bash-Shell <- make a backup
+dump -1aj -f bash.bak ../Bash-Shell <- make an incremental backup
+rsync -rogpav –delete /home /tmp <- directory synchronization via rsync
+rsync -rogpav -e ssh -delete /home ip_address <- directory synchronization via rsync with SSH tunnel
+dd bs=1M if=/dev/hda | gzip | ssh user@ip_addr ‘dd of=hda.gz’ <- backup a remote host's hard drive via ssh
+dd if=/dev/sda of=/tmp/file1 <- saves hard drive contents to a file
+( cd /tmp/local/ && tar c . ) | ssh -C user@ip_addr ‘cd /home/share/ && tar x -p’ <- copy content from one directory to another via ssh
+( tar c /home ) | ssh -C user@ip_addr ‘cd /home/backup-home && tar x -p’ <- copy from a local directory to a remote directory via ssh
+ifconfig eth0 promisc <- configure eth0 for sniffing
+dhclient eth0 <- enable eth0 for dhcp mode
+route -n <- route screen
+route add -net 0/0 gw IP_Gateway <- configure default input
+route add -net 192.168.0.0 netmask 255.255.0.0 gw 192.168.1.1 <- configure a static route to find 192.168.0.0/16
+route del 0/0 gw IP_gateway <- remove static route
+host www.example.com <- find domain IP
+nslookup www.example.com <- find hostname
+ip link show <- interface status
+ethtool eth0 <- ethernet card statistics
+netstat -tup <- DISPLAY ALL ACTIVE NETWORK CONNECTIONS AND THEIR PID
+netstat -tupl <- display network service listeners about the system and its PID
+tcpdump tcp port 80 <- http traffic
+iwlist scan <- wireless network list
+whois www.example.com.br <- whois database search
+iptables -t filter -L <- print all streams in filter table
+iptables -t nat -L <- print all currents in nat table
+iptables -t filter -F <- clear filter table rules
+iptables -t nat -F <- clear rules from nat table
+iptables -t filter -X <- clear any user-created strings
+iptables -t filter -A INPUT -p tcp -dport telnet -j ACCEPT <- allow telnet connections to enter
+iptables -t filter -A OUTPUT -p tcp -dport http -j DROP <- block outgoing HTTP connections
+iptables -t filter -A FORWARD -p tcp –dport pop3 -j ACCEPT <- allow POP connections to a forward string
+iptables -t filter -A INPUT -j LOG -log-prefix "DROP INPUT" <- log an input string
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE <- sets a PAT on eth0, hiding the duress output packets
+ps -eafw <- display linux tasks
+ps -e -o pid,args –forest <- display linux tasks hierarchically
+pstree <- system process tree
+lsof -p 1203 <- display a list of files opened by processes
+lsof /root <- display list of fir files from a given path
+strace -c ls >/dev/null <- display system calls made and received by a process
+watch -n1 'cat /proc/interrupts' <- display realtime interrupts
+last reboot <- last system reboots
+lsmod <- display loaded kernel
+smartctl -A /dev/sda <- monitor hard drive reliability by SMART
+dmesg <- events in kernel loading process
+messages <- system events
+apropos ..who <- useful when you can't remember the program name right
+whatis ..who <- what the program does
+whatis ifconfig <- what does the program do
+echo wget -c www.example.com/files.iso | at 09 <- download a file at 9 am
+/sbin/service iptables save <- save iptables rules
+su --user login <- access another login
+mount -o loop disk1.iso /mnt/disk <- mount CD's mainly ISO9660, iso
+file -Ls /dev/sr0 <- details of a filesystem
+python -m SimpleHTTPServer 8000 <- Mount a simple HTTP server inside a directory, specifying the port
+tcptrack -i eth0 <- TCP traffic monitoring
+mkfs.ext4 -S /dev/sdb1 <- filesystem patch
+sync; echo 1 > /proc/sys/vm/drop_caches <- CLEAR UNUSED MEMORY *****
+watch -n0.1 ls <- list realtime directory from 100ms in 100ms
+curl ipinfo.io/*.*.*.* <- RETURNS GEOGRAPHICAL INFORMATION FROM AN IP
+tracepath ????.com <- simpler traceroute
+findsmb <- find machines connected by samba
+alsactl restore <- restart audio
+$ sed 's/$'"/`echo \\\r`/" input.txt > output.txt <- ***Change UNIX to DOS format from text file ***
+strings binary_file <- list text contents in a binary file
+objdump binary_file -s <- list text contents in a binary file
+objdump binary_file -d <- list binary assembly codes
+dd if=/dev/cdrom of=file.iso <- convert dvd or cd to ISO file
